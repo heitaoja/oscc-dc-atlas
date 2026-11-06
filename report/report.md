@@ -238,7 +238,7 @@ MTORC1_SIGNALING（−1.59）、ALLOGRAFT_REJECTION、COMPLEMENT、KRAS_SIGNALIN
 
 ## 7. 局限
 
-见 [`docs/limitations.md`](../docs/limitations.md)。最关键的四条：
+最关键的四条：
 
 - 数据不是为 DC 设计的，稀有亚群细胞数少（cDC1 = 124）；
 - **两个数据集的特征集不对称**：GSE172577 只有 22,161 个 Ensembl ID（是 GSE193766 的 33,514 的子集），

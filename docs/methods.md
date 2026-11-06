@@ -106,7 +106,7 @@ data/raw/<GSE>/<GSM>_seurat.rds  (raw UMI counts)
 - `FindMarkers(test.use = "wilcox", min.pct = 0.1, logfc.threshold = 0.25)`。
 - 显著性：BH 校正 `p_val_adj < 0.05`；效应量：`|avg_log2FC| ≥ 0.5`。
 - 主对比：`migDC` vs `cDC2`（双向），另附各亚群 `FindAllMarkers`（仅上调）。
-- 不把"细胞"当独立重复去推断患者水平差异（见 §10 与 `docs/limitations.md`）。
+- 不把"细胞"当独立重复去推断患者水平差异（见 §10）。
 
 ## 7. 富集分析
 

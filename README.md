@@ -23,7 +23,7 @@
 - 一条命令跑完（`./run_all.sh` 或 `make all`），中间产物全部落盘、可检查；
 - 每个参数只定义一次（`R/00_setup.R` 的 `PARAMS`），脚本里没有魔法数字；
 - 每张图、每个结论都能追溯到 `results/tables/` 里的一个文件；
-- 明确写下哪些结论**站不住**（[`docs/limitations.md`](docs/limitations.md)）。
+- 明确写下哪些结论**站不住**（见报告第 7 节）。
 
 ## 一句话结论
 
@@ -106,7 +106,6 @@ make all                     # 有 make 的环境
 |---|---|
 | [`docs/methods.md`](docs/methods.md) | 每个参数的选择理由 |
 | [`docs/data_provenance.md`](docs/data_provenance.md) | 数据来源、文件取舍、校验和 |
-| [`docs/limitations.md`](docs/limitations.md) | 这个项目**不能**回答什么，以及为什么 |
 | [`docs/sessionInfo.txt`](docs/sessionInfo.txt) | 软件版本 |
 
 ## 引用
