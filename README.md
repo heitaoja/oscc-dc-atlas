@@ -17,7 +17,7 @@
 对一个既有的口腔癌树突状细胞（DC）单细胞分析的**重建版**。
 
 原有分析的链条存在多处硬伤（脚本无法运行、注释参考集被破坏、富集方向混在一起、
-拟时序根节点靠鼠标点选），详见 [`docs/audit_original_thesis.md`](docs/audit_original_thesis.md)。
+拟时序根节点靠鼠标点选）。
 本仓库不做"修补"，而是**从 GEO 原始 UMI 矩阵重跑整条流程**，并用工程化的方式组织：
 
 - 一条命令跑完（`./run_all.sh` 或 `make all`），中间产物全部落盘、可检查；
@@ -104,7 +104,6 @@ make all                     # 有 make 的环境
 
 | 文件 | 内容 |
 |---|---|
-| [`docs/audit_original_thesis.md`](docs/audit_original_thesis.md) | 一份既有分析的复现性体检（逐行 bug + 方法学问题 + 结论分级） |
 | [`docs/methods.md`](docs/methods.md) | 每个参数的选择理由 |
 | [`docs/data_provenance.md`](docs/data_provenance.md) | 数据来源、文件取舍、校验和 |
 | [`docs/limitations.md`](docs/limitations.md) | 这个项目**不能**回答什么，以及为什么 |
