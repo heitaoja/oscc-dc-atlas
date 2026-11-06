@@ -1,0 +1,76 @@
+"cluster","reference","label","score"
+"1","blueprint","CD8+ T-cells",0.799962966778009
+"1","hpca","T_cells",0.742955376191491
+"1","monaco","NK cells",0.651773311980621
+"10","blueprint","Fibroblasts",0.746101989731116
+"10","hpca","Tissue_stem_cells",0.741093080233753
+"10","monaco","Dendritic cells",0.548101548494577
+"11","blueprint","Keratinocytes",0.745570449683617
+"11","hpca","Epithelial_cells",0.697958900804747
+"11","monaco","Dendritic cells",0.55109616339552
+"12","blueprint","CD8+ T-cells",0.755168450001485
+"12","hpca","T_cells",0.702232416526845
+"12","monaco","Dendritic cells",0.545043919259808
+"13","blueprint","Neutrophils",0.736734131322613
+"13","hpca","Neutrophils",0.712039399550772
+"13","monaco","Neutrophils",0.773948697209804
+"14","blueprint","Epithelial cells",0.665704897305617
+"14","hpca","Epithelial_cells",0.694938276258049
+"14","monaco","Dendritic cells",0.542915645427886
+"15","blueprint","Epithelial cells",0.657982039300965
+"15","hpca","Epithelial_cells",0.668477103791328
+"15","monaco","Dendritic cells",0.513381244708702
+"16","blueprint","B-cells",0.690186529345747
+"16","hpca","Epithelial_cells",0.596220593305364
+"16","monaco","B cells",0.627309381085855
+"17","blueprint","B-cells",0.783135504434125
+"17","hpca","B_cell",0.701009377653435
+"17","monaco","Dendritic cells",0.644361844467192
+"18","blueprint","Endothelial cells",0.744292738538351
+"18","hpca","Endothelial_cells",0.683166848586766
+"18","monaco","Monocytes",0.546539476898942
+"19","blueprint","DC",0.740607308551929
+"19","hpca","DC",0.716101900015615
+"19","monaco","Dendritic cells",0.802473836254595
+"2","blueprint","Epithelial cells",0.774296016669158
+"2","hpca","Keratinocytes",0.744375273588072
+"2","monaco","Dendritic cells",0.552845225961214
+"20","blueprint","HSC",0.613627563488474
+"20","hpca","CMP",0.624365580391161
+"20","monaco","Basophils",0.593096833261491
+"21","blueprint","Fibroblasts",0.689138971156731
+"21","hpca","Tissue_stem_cells",0.700147549394808
+"21","monaco","Dendritic cells",0.548436570622893
+"22","blueprint","Epithelial cells",0.691034256161569
+"22","hpca","Epithelial_cells",0.71033276473741
+"22","monaco","Dendritic cells",0.53968647410228
+"23","blueprint","Epithelial cells",0.747886917086524
+"23","hpca","Keratinocytes",0.739826037208424
+"23","monaco","Monocytes",0.494207350396208
+"24","blueprint","B-cells",0.671057886935514
+"24","hpca","B_cell",0.647231037729782
+"24","monaco","Dendritic cells",0.754773271421675
+"25","blueprint","Skeletal muscle",0.63536174727714
+"25","hpca","Tissue_stem_cells",0.607621864824999
+"25","monaco","Dendritic cells",0.502336784943127
+"3","blueprint","Epithelial cells",0.779671551422267
+"3","hpca","Epithelial_cells",0.72761301440618
+"3","monaco","Dendritic cells",0.555606059772369
+"4","blueprint","CD8+ T-cells",0.771937748435072
+"4","hpca","T_cells",0.702780038427645
+"4","monaco","T cells",0.592145709525202
+"5","blueprint","Epithelial cells",0.745738677184425
+"5","hpca","Epithelial_cells",0.708354337084199
+"5","monaco","Dendritic cells",0.556378403477616
+"6","blueprint","Monocytes",0.805241678221882
+"6","hpca","Monocyte",0.748956398627579
+"6","monaco","Monocytes",0.819443358907318
+"7","blueprint","Epithelial cells",0.75452204474837
+"7","hpca","Epithelial_cells",0.727019183536517
+"7","monaco","Monocytes",0.539887680039694
+"8","blueprint","Epithelial cells",0.736037186879455
+"8","hpca","Keratinocytes",0.765754613870313
+"8","monaco","Monocytes",0.541345968248042
+"9","blueprint","Epithelial cells",0.744080340531543
+"9","hpca","Epithelial_cells",0.710592695988038
+"9","monaco","Dendritic cells",0.539217807444669

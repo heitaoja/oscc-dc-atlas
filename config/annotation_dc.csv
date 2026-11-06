@@ -1,0 +1,9 @@
+cluster,cell_type,evidence
+1,pDC,"LILRA4 78% / CLEC4C 60% / IL3RA 88% / TCF4 94% / IRF7 98% / TCL1A / PTCRA"
+2,LowQuality,"median 478 genes, 1,016 UMI; KRT14+MUC7+ ambient epithelial signal; excluded from downstream"
+3,cDC2,"CD1C 68% / CLEC10A 84% / FCER1A 77% / CD300E 35% / EREG 58%"
+4,LC-like,"CD207 63% / CD1A 82% / CD1E 75% / FCGBP 56% / DHRS9+; CD1A+CD207+ Langerhans-like cDC2"
+5,LowQuality,"median 1,154 genes, 3,152 UMI; mixed pDC/cDC2/epithelial markers; excluded from downstream"
+6,migDC,"LAMP3 91% / CCR7 92% / CCL19 44% / CCL17 37% / CCL22 74% / CD274 73% / IDO1 80%; mregDC phenotype"
+7,Proliferating DC,"MKI67 73% / TOP2A 78% / SPP1 32%; cycling DC"
+8,cDC1,"CLEC9A 89% / XCR1 42% / IDO1 85% / CADM1 / CDH2"

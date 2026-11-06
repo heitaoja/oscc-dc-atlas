@@ -1,0 +1,241 @@
+"Var1","Var2","Freq"
+"B cells","GSM5258385",0
+"DC","GSM5258385",39
+"Endothelial cells","GSM5258385",6
+"Epithelial","GSM5258385",518
+"Epithelial (basal)","GSM5258385",1500
+"Epithelial (keratinized)","GSM5258385",0
+"Epithelial (secretory)","GSM5258385",0
+"Epithelial (suprabasal)","GSM5258385",359
+"Epithelial (tumour)","GSM5258385",3923
+"Fibroblasts","GSM5258385",87
+"Ionocytes","GSM5258385",63
+"Keratinocytes","GSM5258385",190
+"Macrophages","GSM5258385",101
+"Mast cells","GSM5258385",14
+"Neutrophils","GSM5258385",0
+"NK cells","GSM5258385",41
+"pDC","GSM5258385",0
+"Pericytes","GSM5258385",7
+"Plasma cells","GSM5258385",11
+"Proliferating cells","GSM5258385",464
+"Salivary acinar cells","GSM5258385",0
+"Skeletal muscle","GSM5258385",0
+"T cells","GSM5258385",15
+"Treg","GSM5258385",43
+"B cells","GSM5258386",200
+"DC","GSM5258386",151
+"Endothelial cells","GSM5258386",260
+"Epithelial","GSM5258386",191
+"Epithelial (basal)","GSM5258386",956
+"Epithelial (keratinized)","GSM5258386",1
+"Epithelial (secretory)","GSM5258386",0
+"Epithelial (suprabasal)","GSM5258386",525
+"Epithelial (tumour)","GSM5258386",527
+"Fibroblasts","GSM5258386",122
+"Ionocytes","GSM5258386",12
+"Keratinocytes","GSM5258386",506
+"Macrophages","GSM5258386",528
+"Mast cells","GSM5258386",245
+"Neutrophils","GSM5258386",18
+"NK cells","GSM5258386",1936
+"pDC","GSM5258386",173
+"Pericytes","GSM5258386",67
+"Plasma cells","GSM5258386",73
+"Proliferating cells","GSM5258386",561
+"Salivary acinar cells","GSM5258386",0
+"Skeletal muscle","GSM5258386",3
+"T cells","GSM5258386",1005
+"Treg","GSM5258386",529
+"B cells","GSM5258387",23
+"DC","GSM5258387",37
+"Endothelial cells","GSM5258387",250
+"Epithelial","GSM5258387",99
+"Epithelial (basal)","GSM5258387",843
+"Epithelial (keratinized)","GSM5258387",7
+"Epithelial (secretory)","GSM5258387",0
+"Epithelial (suprabasal)","GSM5258387",345
+"Epithelial (tumour)","GSM5258387",769
+"Fibroblasts","GSM5258387",84
+"Ionocytes","GSM5258387",0
+"Keratinocytes","GSM5258387",784
+"Macrophages","GSM5258387",426
+"Mast cells","GSM5258387",12
+"Neutrophils","GSM5258387",445
+"NK cells","GSM5258387",377
+"pDC","GSM5258387",17
+"Pericytes","GSM5258387",42
+"Plasma cells","GSM5258387",165
+"Proliferating cells","GSM5258387",389
+"Salivary acinar cells","GSM5258387",0
+"Skeletal muscle","GSM5258387",11
+"T cells","GSM5258387",235
+"Treg","GSM5258387",126
+"B cells","GSM5258388",4
+"DC","GSM5258388",90
+"Endothelial cells","GSM5258388",75
+"Epithelial","GSM5258388",1360
+"Epithelial (basal)","GSM5258388",1540
+"Epithelial (keratinized)","GSM5258388",0
+"Epithelial (secretory)","GSM5258388",0
+"Epithelial (suprabasal)","GSM5258388",2261
+"Epithelial (tumour)","GSM5258388",1728
+"Fibroblasts","GSM5258388",32
+"Ionocytes","GSM5258388",47
+"Keratinocytes","GSM5258388",1312
+"Macrophages","GSM5258388",80
+"Mast cells","GSM5258388",4
+"Neutrophils","GSM5258388",1
+"NK cells","GSM5258388",148
+"pDC","GSM5258388",0
+"Pericytes","GSM5258388",33
+"Plasma cells","GSM5258388",0
+"Proliferating cells","GSM5258388",458
+"Salivary acinar cells","GSM5258388",0
+"Skeletal muscle","GSM5258388",1
+"T cells","GSM5258388",66
+"Treg","GSM5258388",8
+"B cells","GSM5258389",105
+"DC","GSM5258389",101
+"Endothelial cells","GSM5258389",191
+"Epithelial","GSM5258389",70
+"Epithelial (basal)","GSM5258389",2030
+"Epithelial (keratinized)","GSM5258389",536
+"Epithelial (secretory)","GSM5258389",0
+"Epithelial (suprabasal)","GSM5258389",66
+"Epithelial (tumour)","GSM5258389",1341
+"Fibroblasts","GSM5258389",787
+"Ionocytes","GSM5258389",11
+"Keratinocytes","GSM5258389",1591
+"Macrophages","GSM5258389",901
+"Mast cells","GSM5258389",81
+"Neutrophils","GSM5258389",26
+"NK cells","GSM5258389",54
+"pDC","GSM5258389",30
+"Pericytes","GSM5258389",84
+"Plasma cells","GSM5258389",11
+"Proliferating cells","GSM5258389",503
+"Salivary acinar cells","GSM5258389",0
+"Skeletal muscle","GSM5258389",48
+"T cells","GSM5258389",149
+"Treg","GSM5258389",69
+"B cells","GSM5258390",281
+"DC","GSM5258390",228
+"Endothelial cells","GSM5258390",135
+"Epithelial","GSM5258390",614
+"Epithelial (basal)","GSM5258390",186
+"Epithelial (keratinized)","GSM5258390",0
+"Epithelial (secretory)","GSM5258390",2417
+"Epithelial (suprabasal)","GSM5258390",0
+"Epithelial (tumour)","GSM5258390",443
+"Fibroblasts","GSM5258390",429
+"Ionocytes","GSM5258390",550
+"Keratinocytes","GSM5258390",54
+"Macrophages","GSM5258390",771
+"Mast cells","GSM5258390",41
+"Neutrophils","GSM5258390",29
+"NK cells","GSM5258390",462
+"pDC","GSM5258390",19
+"Pericytes","GSM5258390",301
+"Plasma cells","GSM5258390",287
+"Proliferating cells","GSM5258390",135
+"Salivary acinar cells","GSM5258390",341
+"Skeletal muscle","GSM5258390",129
+"T cells","GSM5258390",254
+"Treg","GSM5258390",249
+"B cells","GSM5820668",637
+"DC","GSM5820668",265
+"Endothelial cells","GSM5820668",110
+"Epithelial","GSM5820668",9
+"Epithelial (basal)","GSM5820668",1
+"Epithelial (keratinized)","GSM5820668",0
+"Epithelial (secretory)","GSM5820668",0
+"Epithelial (suprabasal)","GSM5820668",7
+"Epithelial (tumour)","GSM5820668",13
+"Fibroblasts","GSM5820668",785
+"Ionocytes","GSM5820668",5
+"Keratinocytes","GSM5820668",3
+"Macrophages","GSM5820668",939
+"Mast cells","GSM5820668",117
+"Neutrophils","GSM5820668",593
+"NK cells","GSM5820668",1314
+"pDC","GSM5820668",95
+"Pericytes","GSM5820668",54
+"Plasma cells","GSM5820668",136
+"Proliferating cells","GSM5820668",43
+"Salivary acinar cells","GSM5820668",2
+"Skeletal muscle","GSM5820668",0
+"T cells","GSM5820668",1897
+"Treg","GSM5820668",934
+"B cells","GSM5820669",315
+"DC","GSM5820669",217
+"Endothelial cells","GSM5820669",117
+"Epithelial","GSM5820669",1
+"Epithelial (basal)","GSM5820669",89
+"Epithelial (keratinized)","GSM5820669",0
+"Epithelial (secretory)","GSM5820669",0
+"Epithelial (suprabasal)","GSM5820669",9
+"Epithelial (tumour)","GSM5820669",486
+"Fibroblasts","GSM5820669",190
+"Ionocytes","GSM5820669",4
+"Keratinocytes","GSM5820669",91
+"Macrophages","GSM5820669",586
+"Mast cells","GSM5820669",270
+"Neutrophils","GSM5820669",1749
+"NK cells","GSM5820669",1577
+"pDC","GSM5820669",18
+"Pericytes","GSM5820669",52
+"Plasma cells","GSM5820669",667
+"Proliferating cells","GSM5820669",691
+"Salivary acinar cells","GSM5820669",0
+"Skeletal muscle","GSM5820669",3
+"T cells","GSM5820669",1464
+"Treg","GSM5820669",1086
+"B cells","GSM5820670",22
+"DC","GSM5820670",109
+"Endothelial cells","GSM5820670",30
+"Epithelial","GSM5820670",1620
+"Epithelial (basal)","GSM5820670",39
+"Epithelial (keratinized)","GSM5820670",0
+"Epithelial (secretory)","GSM5820670",202
+"Epithelial (suprabasal)","GSM5820670",1457
+"Epithelial (tumour)","GSM5820670",526
+"Fibroblasts","GSM5820670",277
+"Ionocytes","GSM5820670",191
+"Keratinocytes","GSM5820670",316
+"Macrophages","GSM5820670",150
+"Mast cells","GSM5820670",160
+"Neutrophils","GSM5820670",2
+"NK cells","GSM5820670",1406
+"pDC","GSM5820670",6
+"Pericytes","GSM5820670",88
+"Plasma cells","GSM5820670",532
+"Proliferating cells","GSM5820670",352
+"Salivary acinar cells","GSM5820670",2029
+"Skeletal muscle","GSM5820670",1
+"T cells","GSM5820670",430
+"Treg","GSM5820670",62
+"B cells","GSM5820671",63
+"DC","GSM5820671",264
+"Endothelial cells","GSM5820671",337
+"Epithelial","GSM5820671",66
+"Epithelial (basal)","GSM5820671",118
+"Epithelial (keratinized)","GSM5820671",0
+"Epithelial (secretory)","GSM5820671",0
+"Epithelial (suprabasal)","GSM5820671",12
+"Epithelial (tumour)","GSM5820671",2510
+"Fibroblasts","GSM5820671",1729
+"Ionocytes","GSM5820671",0
+"Keratinocytes","GSM5820671",13
+"Macrophages","GSM5820671",789
+"Mast cells","GSM5820671",556
+"Neutrophils","GSM5820671",126
+"NK cells","GSM5820671",679
+"pDC","GSM5820671",13
+"Pericytes","GSM5820671",515
+"Plasma cells","GSM5820671",23
+"Proliferating cells","GSM5820671",588
+"Salivary acinar cells","GSM5820671",0
+"Skeletal muscle","GSM5820671",62
+"T cells","GSM5820671",650
+"Treg","GSM5820671",559

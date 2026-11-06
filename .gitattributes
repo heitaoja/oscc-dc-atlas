@@ -1,0 +1,8 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.pdf binary
+*.rds binary
+*.gmt text eol=lf
+*.csv text eol=lf

@@ -1,0 +1,57 @@
+"sample","group","dc_subtype","n"
+"GSM5258385","tumour","cDC2",2
+"GSM5258385","tumour","LC-like",12
+"GSM5258385","tumour","migDC",1
+"GSM5258385","tumour","Proliferating DC",15
+"GSM5258386","tumour","cDC1",23
+"GSM5258386","tumour","cDC2",11
+"GSM5258386","tumour","LC-like",37
+"GSM5258386","tumour","migDC",21
+"GSM5258386","tumour","pDC",172
+"GSM5258386","tumour","Proliferating DC",6
+"GSM5258387","tumour","cDC1",3
+"GSM5258387","tumour","cDC2",3
+"GSM5258387","tumour","LC-like",13
+"GSM5258387","tumour","migDC",5
+"GSM5258387","tumour","pDC",17
+"GSM5258387","tumour","Proliferating DC",2
+"GSM5258388","tumour","cDC1",2
+"GSM5258388","tumour","cDC2",9
+"GSM5258388","tumour","LC-like",48
+"GSM5258388","tumour","migDC",3
+"GSM5258388","tumour","Proliferating DC",10
+"GSM5258389","tumour","cDC1",9
+"GSM5258389","tumour","cDC2",16
+"GSM5258389","tumour","LC-like",17
+"GSM5258389","tumour","migDC",16
+"GSM5258389","tumour","pDC",29
+"GSM5258389","tumour","Proliferating DC",7
+"GSM5258390","tumour","cDC1",6
+"GSM5258390","tumour","cDC2",17
+"GSM5258390","tumour","LC-like",63
+"GSM5258390","tumour","migDC",12
+"GSM5258390","tumour","pDC",7
+"GSM5258390","tumour","Proliferating DC",38
+"GSM5820668","tumour","cDC1",41
+"GSM5820668","tumour","cDC2",130
+"GSM5820668","tumour","LC-like",1
+"GSM5820668","tumour","migDC",12
+"GSM5820668","tumour","pDC",94
+"GSM5820668","tumour","Proliferating DC",18
+"GSM5820669","normal","cDC1",22
+"GSM5820669","normal","cDC2",37
+"GSM5820669","normal","LC-like",20
+"GSM5820669","normal","migDC",56
+"GSM5820669","normal","pDC",17
+"GSM5820669","normal","Proliferating DC",20
+"GSM5820670","tumour","cDC1",7
+"GSM5820670","tumour","cDC2",30
+"GSM5820670","tumour","LC-like",13
+"GSM5820670","tumour","pDC",6
+"GSM5820670","tumour","Proliferating DC",5
+"GSM5820671","normal","cDC1",11
+"GSM5820671","normal","cDC2",55
+"GSM5820671","normal","LC-like",62
+"GSM5820671","normal","migDC",32
+"GSM5820671","normal","pDC",13
+"GSM5820671","normal","Proliferating DC",18

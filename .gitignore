@@ -1,0 +1,33 @@
+# ---- data (never commit; see data/README.md) ----
+data/raw/**
+data/processed/**
+!data/README.md
+
+# ---- large intermediates ----
+results/objects/
+*.rds
+*.rda
+*.h5ad
+*.h5
+*.rar
+*.zip
+
+# ---- R ----
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+renv/library/
+renv/staging/
+renv/python/
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# ---- local scratch ----
+_work/
+*.log
