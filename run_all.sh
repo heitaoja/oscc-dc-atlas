@@ -5,6 +5,7 @@
 # Usage:
 #   ./run_all.sh              # run the discovery workflow in order
 #   ./run_all.sh 12           # validate after downloading GSE181919
+#   ./run_all.sh 14 verify_all # build manuscript figures and audit saved results
 #   ./run_all.sh 05 06        # run only the steps whose name starts with 05/06
 #   RSCRIPT=/usr/bin/Rscript ./run_all.sh
 #
@@ -25,8 +26,9 @@ STEPS=(
   09_composition
   10_qc_figure
   11_donor_pseudobulk
+  13_tme_covariation
 )
-EXTERNAL_STEP=12_external_validation
+OPTIONAL_STEPS=(12_external_validation 14_manuscript_figures 99_verify_all)
 
 # ---- locate Rscript --------------------------------------------------------
 if [[ -z "${RSCRIPT:-}" ]]; then
@@ -48,8 +50,11 @@ mkdir -p results/logs results/objects results/figures results/tables
 if [[ $# -gt 0 ]]; then
   SELECTED=()
   for want in "$@"; do
+    if [[ "$want" == "verify_all" ]]; then
+      want=99_verify_all
+    fi
     matched=false
-    for s in "${STEPS[@]}" "$EXTERNAL_STEP"; do
+    for s in "${STEPS[@]}" "${OPTIONAL_STEPS[@]}"; do
       if [[ "$s" == "$want"* ]]; then
         SELECTED+=("$s")
         matched=true

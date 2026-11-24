@@ -19,23 +19,32 @@ panel <- c("LAMP3", "CCR7", "CCL19", "CCL22", "CD274", "IDO1", "CD1C", "CLEC10A"
            "CLEC9A", "XCR1", "CD83", "CD86", "PDCD1LG2", "CD200", "NFKBIA", "TNFAIP3")
 object_dir <- Sys.getenv("OSCC_OBJECT_DIR", unset = OBJ_DIR)
 input_name <- "05_dc_annotated.rds"
-dc <- read_atlas_object(input_name, object_dir)
+input_file <- atlas_object_path(input_name, object_dir)
+dc <- read_atlas_object(input_name, dirname(input_file))
 counts <- SeuratObject::LayerData(dc, assay = "RNA", layer = "counts")
 md <- dc@meta.data[colnames(counts), , drop = FALSE]
 bulk <- aggregate_umi(counts, md)
 samples <- PARAMS$samples
 
-contrasts <- rbind(
+contrasts <- bind_rows(
   data.frame(analysis = "primary", positive = "migDC", negative = "cDC2",
              min_cells = cfg$primary_min_cells, norm = "TMM"),
   data.frame(analysis = paste0("min_", cfg$sensitivity_min_cells), positive = "migDC",
              negative = "cDC2", min_cells = cfg$sensitivity_min_cells, norm = "TMM"),
   data.frame(analysis = "normalization", positive = "migDC", negative = "cDC2",
              min_cells = cfg$primary_min_cells, norm = "TMMwsp"),
+  data.frame(analysis = "strict_filter_min10", positive = "migDC", negative = "cDC2",
+             min_cells = cfg$primary_min_cells, norm = "TMM",
+             min_count = cfg$strict_min_count, min_total_count = cfg$strict_min_total_count),
   data.frame(analysis = c("migDC_vs_cDC1", "cDC1_vs_cDC2"),
              positive = c("migDC", "cDC1"), negative = c("cDC1", "cDC2"),
-             min_cells = cfg$secondary_min_cells, norm = "TMM")
-)
+             min_cells = cfg$secondary_min_cells, norm = "TMM"),
+  data.frame(analysis = c("migDC_vs_LClike", "LClike_vs_cDC2"),
+             positive = c("migDC", "LC-like"), negative = c("LC-like", "cDC2"),
+             min_cells = cfg$primary_min_cells, norm = "TMM")
+) %>%
+  mutate(min_count = coalesce(min_count, cfg$min_count),
+         min_total_count = coalesce(min_total_count, cfg$min_total_count))
 
 run_contrast <- function(spec) {
   eligibility <- paired_cell_counts(bulk, samples, spec$positive, spec$negative, spec$min_cells)
@@ -44,7 +53,8 @@ run_contrast <- function(spec) {
     return(list(spec = spec, eligibility = eligibility, used = used, fit = NULL))
   }
   pair <- paired_bulk(bulk, used, spec$positive, spec$negative)
-  fit <- fit_paired_bulk(pair, spec$norm)
+  fit <- fit_paired_bulk(pair, norm = spec$norm,
+                        min_count = spec$min_count, min_total_count = spec$min_total_count)
   list(spec = spec, eligibility = eligibility, used = used, fit = fit)
 }
 runs <- setNames(lapply(seq_len(nrow(contrasts)), function(i) run_contrast(contrasts[i, ])),
@@ -100,7 +110,7 @@ loo_summary <- bind_rows(lapply(names(leave_out), function(donor) {
                                     method = "spearman"))
 }))
 
-focal <- runs[c("primary", "migDC_vs_cDC1", "cDC1_vs_cDC2")]
+focal <- runs[c("primary", "migDC_vs_cDC1", "cDC1_vs_cDC2", "migDC_vs_LClike", "LClike_vs_cDC2")]
 focal <- Filter(function(run) !is.null(run$fit), focal)
 donor_effects <- lapply(focal, function(run) {
   paired_effects(run$fit$y, run$spec$positive, run$spec$negative)
@@ -110,9 +120,12 @@ program_effects <- bind_rows(lapply(names(focal), function(id) {
   out$analysis <- id
   left_join(out, select(focal[[id]]$used, patient, dataset), by = "patient")
 }))
+program_fry <- bind_rows(lapply(focal, function(run) fry_programs(run$fit$y, programs)),
+                         .id = "analysis")
 program_summary <- bind_rows(lapply(split(program_effects, program_effects$analysis), function(effects) {
   cbind(analysis = effects$analysis[1], summarize_programs(effects))
-}))
+})) %>%
+  left_join(select(program_fry, -n_genes_fry), by = c("analysis", "program"))
 panel_effects <- bind_rows(lapply(names(focal), function(id) {
   gene_effects_long(donor_effects[[id]], panel) %>%
     mutate(analysis = id) %>%
@@ -186,6 +199,10 @@ pathways <- data.frame(pathway = rownames(camera), camera,
 
 # Sensitivity to annotation uses the same gates as the external analysis.
 # Restrict the alternative comparison to the conventional and migratory pool.
+stopifnot(!any(c("CD274", "IDO1") %in% gates$gene))
+gate_programs <- programs
+gate_programs[["Regulatory expression (incl. CD274/IDO1)"]] <-
+  c(programs[["Regulatory expression"]], "CD274", "IDO1")
 gated <- mutate(md, marker_gate = classify_dc(counts, gates, n_detected = 2L))
 label_agreement <- count(gated, dataset, group, dc_subtype, marker_gate, name = "n")
 gate_md <- subset(gated, dc_subtype %in% unique(gates$subtype) & marker_gate %in% unique(gates$subtype))
@@ -207,8 +224,11 @@ gate_runs <- lapply(split(gate_eligibility, gate_eligibility$min_cells), functio
   result$n_shared <- sum(ok)
   result$rho_with_primary <- cor(nongate$log2_fc[ok], fit$de$log2_fc[idx[ok]], method = "spearman")
   scores <- program_differences(paired_effects(fit$y, "migDC", "cDC2"),
-                                 programs, cfg$minimum_program_coverage)
-  list(summary = result, programs = mutate(summarize_programs(scores), min_cells = result$min_cells))
+                                gate_programs, cfg$minimum_program_coverage)
+  program_results <- summarize_programs(scores) %>%
+    left_join(fry_programs(fit$y, gate_programs), by = "program") %>%
+    mutate(min_cells = result$min_cells)
+  list(summary = result, programs = program_results)
 })
 
 write_result <- function(x, suffix) {
@@ -217,7 +237,6 @@ write_result <- function(x, suffix) {
 write_result(bind_rows(lapply(runs, function(run) mutate(run$eligibility, analysis = run$spec$analysis))),
              "donor_eligibility")
 write_result(primary_de, "de_migDC_vs_cDC2")
-input_file <- file.path(object_dir, input_name)
 write_result(data.frame(file = input_name, md5 = unname(tools::md5sum(input_file)),
                         n_cells = ncol(counts), n_genes = nrow(counts)), "input_snapshot")
 primary_pair <- paired_bulk(bulk, primary$used, "migDC", "cDC2")
@@ -234,6 +253,7 @@ write_result(panel_fits, "panel_model_results")
 write_result(panel_effects, "panel_donor_effects")
 write_result(program_gene_effects, "program_gene_donor_effects")
 write_result(program_effects, "program_donor_effects")
+write_result(program_fry, "program_fry")
 write_result(program_summary, "program_summary")
 write_result(program_by_cohort, "program_by_cohort")
 write_result(focus_detection, "gene_detection")
@@ -247,7 +267,10 @@ writeLines(trimws(capture.output(sessionInfo()), which = "right"),
            file.path(TAB_DIR, "11_sessionInfo.txt"))
 
 plot_scores <- filter(program_effects, analysis == "primary", is.finite(effect))
-plot_means <- filter(program_summary, analysis == "primary", is.finite(mean_effect))
+plot_means <- filter(program_summary, analysis == "primary", is.finite(mean_effect)) %>%
+  mutate(stat_label = sprintf("Mean %+.3f\nPaired t p = %.3g   fry FDR = %.3g",
+                              mean_effect, p_paired_t, fdr_fry))
+stat_labels <- setNames(plot_means$stat_label, plot_means$program)
 p1 <- ggplot(plot_scores, aes(x = effect, y = program)) +
   geom_vline(xintercept = 0, colour = "grey75", linetype = "dashed") +
   geom_errorbar(data = plot_means, aes(y = program, xmin = lower_95_t, xmax = upper_95_t),
@@ -257,15 +280,21 @@ p1 <- ggplot(plot_scores, aes(x = effect, y = program)) +
   geom_point(data = plot_means, aes(x = mean_effect),
              shape = 23, size = 3.6, fill = "white", colour = "black") +
   scale_colour_manual(values = c(GSE172577 = "#117B75", GSE193766 = "#8D4F91")) +
+  scale_y_discrete(sec.axis = dup_axis(name = NULL, labels = function(program) stat_labels[program])) +
   labs(x = "Paired mean log2 CPM difference (migDC - cDC2)", y = NULL,
        colour = "GEO series", title = "Donor-paired DC programs",
        subtitle = paste(nrow(primary$used), "matched tumour donors. Mean and 95% t intervals shown.")) +
-  theme_pub() + theme(legend.position = "bottom", panel.grid.major.y = element_blank())
-save_fig(p1, "11_paired_dc_programs", 8, 4.1)
+  theme_pub() + theme(legend.position = "bottom", panel.grid.major.y = element_blank(),
+                      axis.text.y.right = element_text(hjust = 0, size = 9),
+                      axis.ticks.y.right = element_blank())
+save_fig(p1, "11_paired_dc_programs", 10, 4.1)
 
 plot_panel <- filter(panel_effects, gene %in% c("IDO1", "CD274", "PDCD1LG2", "CD200", "CD83", "TNFAIP3")) %>%
-  mutate(analysis = factor(analysis, c("primary", "migDC_vs_cDC1", "cDC1_vs_cDC2"),
-                           c("migDC - cDC2", "migDC - cDC1", "cDC1 - cDC2")))
+  mutate(analysis = factor(analysis,
+                           levels = c("primary", "migDC_vs_cDC1", "migDC_vs_LClike",
+                                      "cDC1_vs_cDC2", "LClike_vs_cDC2"),
+                           labels = c("migDC - cDC2", "migDC - cDC1", "migDC - LC-like",
+                                      "cDC1 - cDC2", "LC-like - cDC2")))
 p2 <- ggplot(plot_panel, aes(log2_cpm_difference, gene)) +
   geom_vline(xintercept = 0, colour = "grey75", linetype = "dashed") +
   geom_point(aes(colour = dataset), size = 2.4, alpha = 0.8,

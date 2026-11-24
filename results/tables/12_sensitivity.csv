@@ -1,0 +1,11 @@
+"analysis","pool","gate","min_cells","positive","negative","discovery_contrast","n_donors","donors","status","n_genes","n_fdr","selected_for_validation"
+"primary","myeloid_apc",2,10,"migDC","cDC2","migDC_vs_cDC2",6,"Choi_P6 Choi_P15 Choi_P21 Choi_P26 Choi_P51 Choi_P60","fitted",7941,663,TRUE
+"min_5","myeloid_apc",2,5,"migDC","cDC2","migDC_vs_cDC2",7,"Choi_P6 Choi_P7 Choi_P15 Choi_P21 Choi_P26 Choi_P51 Choi_P60","fitted",7643,661,FALSE
+"cd163_neg_min10","cd163_negative",2,10,"migDC","cDC2","migDC_vs_cDC2",4,"Choi_P6 Choi_P15 Choi_P26 Choi_P51","fitted",7672,574,FALSE
+"cd163_neg_min5","cd163_negative",2,5,"migDC","cDC2","migDC_vs_cDC2",7,"Choi_P6 Choi_P7 Choi_P15 Choi_P21 Choi_P26 Choi_P51 Choi_P60","fitted",6530,784,FALSE
+"hybrid_author_migDC_vs_cd163neg_cDC2","hybrid",2,10,"migDC","cDC2","migDC_vs_cDC2",4,"Choi_P6 Choi_P15 Choi_P26 Choi_P51","fitted",7266,1436,FALSE
+"author_dc_only_min10","author_dc",2,10,"migDC","cDC2","migDC_vs_cDC2",0,"","insufficient_donors",NA,NA,FALSE
+"author_dc_only_min5","author_dc",2,5,"migDC","cDC2","migDC_vs_cDC2",0,"","insufficient_donors",NA,NA,FALSE
+"author_dc_migDC_vs_cDC1_min3","author_dc",2,3,"migDC","cDC1","migDC_vs_cDC1",6,"Choi_P6 Choi_P7 Choi_P21 Choi_P26 Choi_P51 Choi_P60","fitted",2821,664,FALSE
+"migDC_vs_cDC1","myeloid_apc",2,5,"migDC","cDC1","migDC_vs_cDC1",4,"Choi_P6 Choi_P21 Choi_P26 Choi_P30","fitted",5280,704,FALSE
+"cDC1_vs_cDC2","myeloid_apc",2,5,"cDC1","cDC2","cDC1_vs_cDC2",3,"Choi_P6 Choi_P21 Choi_P26","insufficient_donors",NA,NA,FALSE

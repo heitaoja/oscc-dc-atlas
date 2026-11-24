@@ -1,9 +1,12 @@
-"analysis","positive","negative","min_cells","norm","n_donors","donors","status","n_genes","n_fdr","n_fdr_positive","n_fdr_negative","n_shared_with_primary","rho_with_primary"
-"primary","migDC","cDC2",10,"TMM",5,"P2 P5 P6 P7 P8","fitted",1556,457,246,211,1556,1
-"min_3","migDC","cDC2",3,"TMM",7,"P2 P3 P4 P5 P6 P7 P8","fitted",1068,299,155,144,1065,0.979176043721597
-"min_5","migDC","cDC2",5,"TMM",5,"P2 P5 P6 P7 P8","fitted",1556,457,246,211,1556,1
-"min_15","migDC","cDC2",15,"TMM",3,"P5 P7 P8","insufficient_donors",NA,NA,NA,NA,NA,NA
-"min_20","migDC","cDC2",20,"TMM",2,"P7 P8","insufficient_donors",NA,NA,NA,NA,NA,NA
-"normalization","migDC","cDC2",10,"TMMwsp",5,"P2 P5 P6 P7 P8","fitted",1556,454,246,208,1556,0.999991406014971
-"migDC_vs_cDC1","migDC","cDC1",5,"TMM",5,"P2 P5 P6 P7 P8","fitted",1404,530,284,246,NA,NA
-"cDC1_vs_cDC2","cDC1","cDC2",5,"TMM",5,"P2 P5 P6 P7 P8","fitted",1306,259,116,143,NA,NA
+"analysis","positive","negative","min_cells","norm","min_count","min_total_count","n_donors","donors","status","n_genes","n_fdr","n_fdr_positive","n_fdr_negative","n_shared_with_primary","rho_with_primary"
+"primary","migDC","cDC2",10,"TMM",3,10,5,"P2 P5 P6 P7 P8","fitted",4151,933,457,476,4151,1
+"min_3","migDC","cDC2",3,"TMM",3,10,7,"P2 P3 P4 P5 P6 P7 P8","fitted",3107,688,325,363,3091,0.982956143824222
+"min_5","migDC","cDC2",5,"TMM",3,10,5,"P2 P5 P6 P7 P8","fitted",4151,933,457,476,4151,1
+"min_15","migDC","cDC2",15,"TMM",3,10,3,"P5 P7 P8","insufficient_donors",NA,NA,NA,NA,NA,NA
+"min_20","migDC","cDC2",20,"TMM",3,10,2,"P7 P8","insufficient_donors",NA,NA,NA,NA,NA,NA
+"normalization","migDC","cDC2",10,"TMMwsp",3,10,5,"P2 P5 P6 P7 P8","fitted",4151,925,480,445,4151,0.999995403512527
+"strict_filter_min10","migDC","cDC2",10,"TMM",10,15,5,"P2 P5 P6 P7 P8","fitted",1556,457,246,211,1556,0.999980231923243
+"migDC_vs_cDC1","migDC","cDC1",5,"TMM",3,10,5,"P2 P5 P6 P7 P8","fitted",3550,944,513,431,NA,NA
+"cDC1_vs_cDC2","cDC1","cDC2",5,"TMM",3,10,5,"P2 P5 P6 P7 P8","fitted",3559,515,212,303,NA,NA
+"migDC_vs_LClike","migDC","LC-like",10,"TMM",3,10,5,"P2 P5 P6 P7 P8","fitted",5873,1484,682,802,NA,NA
+"LClike_vs_cDC2","LC-like","cDC2",10,"TMM",3,10,5,"P2 P5 P6 P7 P8","fitted",6626,457,215,242,NA,NA

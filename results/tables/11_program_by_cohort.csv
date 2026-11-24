@@ -1,9 +1,9 @@
 "dataset","program","n_donors","mean_effect","positive_donors"
-"GSE172577","MHC class II",3,-0.164136339913978,0
-"GSE172577","Maturation",3,1.0577214225131,3
-"GSE172577","NF-kB feedback",3,1.29602063143415,3
-"GSE172577","Regulatory expression",0,NA,0
-"GSE193766","MHC class II",2,-0.688109441586419,0
-"GSE193766","Maturation",2,0.965945135812784,2
-"GSE193766","NF-kB feedback",2,0.982635115179207,2
-"GSE193766","Regulatory expression",0,NA,0
+"GSE172577","MHC class II",3,-0.174452769239154,0
+"GSE172577","Maturation",3,1.04721016453307,3
+"GSE172577","NF-kB feedback",3,1.20265779163736,3
+"GSE172577","Regulatory expression",3,2.89580068450443,3
+"GSE193766","MHC class II",2,-0.702629912955276,0
+"GSE193766","Maturation",2,0.951226866569682,2
+"GSE193766","NF-kB feedback",2,0.85517481371514,2
+"GSE193766","Regulatory expression",2,2.50496926973096,2

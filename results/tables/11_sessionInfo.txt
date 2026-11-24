@@ -9,7 +9,7 @@ locale:
 [1] C
 system code page: 65001
 
-time zone: Asia/Shanghai
+time zone: Asia/Hong_Kong
 tzcode source: internal
 
 attached base packages:

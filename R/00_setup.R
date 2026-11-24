@@ -60,6 +60,8 @@ PARAMS <- list(
   # Paired donor pseudobulk on primary tumours. Lower thresholds are sensitivity analyses.
   pseudobulk = list(primary_min_cells = 10L, sensitivity_min_cells = c(3L, 5L, 15L, 20L),
                     secondary_min_cells = 5L, min_donors = 4L, fdr = 0.05,
+                    min_count = 3L, min_total_count = 10L,
+                    strict_min_count = 10L, strict_min_total_count = 15L,
                     minimum_program_coverage = 0.6, balanced_repeats = 40L),
 
   # ---- enrichment ----
@@ -87,10 +89,21 @@ sample_metadata <- function(rows) {
   rows
 }
 
-read_atlas_object <- function(name, directory = OBJ_DIR) {
+atlas_object_path <- function(name, directory = OBJ_DIR) {
   path <- file.path(directory, name)
-  if (!file.exists(path)) stop("Missing atlas object: ", path, ". Run the upstream stages.")
-  obj <- readRDS(path)
+  if (file.exists(path)) return(path)
+  fallback <- file.path(PROJ, "..", "..", "oscc-dc-atlas", "results", "objects", name)
+  if (!file.exists(fallback)) {
+    stop("Missing atlas object: ", path, ". Checked fallback: ", fallback,
+         ". Run the upstream stages.")
+  }
+  fallback <- normalizePath(fallback, winslash = "/")
+  log_msg("Reading atlas object from upstream cache: ", fallback)
+  fallback
+}
+
+read_atlas_object <- function(name, directory = OBJ_DIR) {
+  obj <- readRDS(atlas_object_path(name, directory))
   obj@meta.data <- sample_metadata(obj@meta.data)
   obj
 }

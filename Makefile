@@ -9,9 +9,9 @@ SHELL := bash
 
 STEPS := 01_load_qc 02_integrate_cluster 03_annotate_major 04_dc_subset \
          05_dc_annotate_de 06_enrichment 07_trajectory 08_tf_activity 09_composition \
-         10_qc_figure 11_donor_pseudobulk
+         10_qc_figure 11_donor_pseudobulk 13_tme_covariation
 
-.PHONY: all clean dirs params session verify validate $(STEPS) 12_external_validation
+.PHONY: all clean dirs params session verify verify_all validate $(STEPS) 12_external_validation 14_manuscript_figures
 
 all: $(STEPS)
 
@@ -54,8 +54,17 @@ params: 01_load_qc
 11_donor_pseudobulk: 05_dc_annotate_de
 	$(RSCRIPT) R/11_donor_pseudobulk.R 2>&1 | tee results/logs/11_donor_pseudobulk.log
 
+13_tme_covariation: 11_donor_pseudobulk
+	$(RSCRIPT) R/13_tme_covariation.R 2>&1 | tee results/logs/13_tme_covariation.log
+
+14_manuscript_figures: | dirs
+	$(RSCRIPT) R/14_manuscript_figures.R 2>&1 | tee results/logs/14_manuscript_figures.log
+
 verify:
 	$(RSCRIPT) R/verify_primary.R
+
+verify_all: | dirs
+	$(RSCRIPT) R/99_verify_all.R 2>&1 | tee results/logs/99_verify_all.log
 
 validate: 12_external_validation
 

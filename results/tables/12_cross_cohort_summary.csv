@@ -1,0 +1,11 @@
+"analysis","pool","discovery_contrast","min_cells","n_donors","status","selected_for_validation","n_shared","rho","concordant_shared","concordance_rate","n_discovery_hits","concordant_hits","concordant_hit_rate","external_fdr_hits"
+"primary","myeloid_apc","migDC_vs_cDC2",10,6,"fitted",TRUE,3989,0.671279727140225,2961,0.742291301077964,881,823,0.93416572077185,347
+"min_5","myeloid_apc","migDC_vs_cDC2",5,7,"fitted",FALSE,3982,0.678697152309391,2938,0.737820190858865,878,832,0.947608200455581,360
+"cd163_neg_min10","cd163_negative","migDC_vs_cDC2",10,4,"fitted",FALSE,3988,0.680290603153047,2926,0.73370110330993,886,837,0.94469525959368,339
+"cd163_neg_min5","cd163_negative","migDC_vs_cDC2",5,7,"fitted",FALSE,3942,0.700335243031899,2903,0.736428209030949,877,833,0.949828962371722,435
+"hybrid_author_migDC_vs_cd163neg_cDC2","hybrid","migDC_vs_cDC2",10,4,"fitted",FALSE,3981,0.751384070333671,3031,0.761366490831449,888,860,0.968468468468468,618
+"author_dc_only_min10","author_dc","migDC_vs_cDC2",10,0,"insufficient_donors",FALSE,NA,NA,NA,NA,NA,NA,NA,NA
+"author_dc_only_min5","author_dc","migDC_vs_cDC2",5,0,"insufficient_donors",FALSE,NA,NA,NA,NA,NA,NA,NA,NA
+"author_dc_migDC_vs_cDC1_min3","author_dc","migDC_vs_cDC1",3,6,"fitted",FALSE,2446,0.79347288788308,1933,0.790269828291087,678,660,0.973451327433628,435
+"migDC_vs_cDC1","myeloid_apc","migDC_vs_cDC1",5,4,"fitted",FALSE,3253,0.561414424594096,2250,0.69166922840455,838,727,0.867541766109785,300
+"cDC1_vs_cDC2","myeloid_apc","cDC1_vs_cDC2",5,3,"insufficient_donors",FALSE,NA,NA,NA,NA,NA,NA,NA,NA

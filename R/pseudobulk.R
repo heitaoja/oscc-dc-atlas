@@ -58,12 +58,15 @@ paired_bulk <- function(bulk, eligible, positive, negative) {
   list(counts = bulk$counts[, rownames(md), drop = FALSE], metadata = md)
 }
 
-fit_paired_bulk <- function(pair, norm = "TMM") {
+fit_paired_bulk <- function(pair, norm = "TMM",
+                            min_count = PARAMS$pseudobulk$min_count,
+                            min_total_count = PARAMS$pseudobulk$min_total_count) {
   md <- pair$metadata
   design <- model.matrix(~ patient + dc_subtype, md)
   stopifnot(qr(design)$rank == ncol(design), nrow(design) > ncol(design))
   y <- edgeR::DGEList(as.matrix(pair$counts), samples = md)
-  keep <- edgeR::filterByExpr(y, group = md$dc_subtype)
+  keep <- edgeR::filterByExpr(y, group = md$dc_subtype,
+                             min.count = min_count, min.total.count = min_total_count)
   if (!any(keep)) stop("No genes pass the pseudobulk expression filter.")
   y <- edgeR::normLibSizes(y[keep, , keep.lib.sizes = FALSE], method = norm)
   y <- edgeR::estimateDisp(y, design, robust = TRUE)
@@ -141,13 +144,41 @@ summarize_programs <- function(effects) {
     x <- program$effect[is.finite(program$effect)]
     n <- length(x)
     mean_effect <- if (n) mean(x) else NA_real_
-    half_width <- if (n >= 2L) qt(0.975, n - 1L) * sd(x) / sqrt(n) else NA_real_
+    sd_effect <- if (n >= 2L) sd(x) else NA_real_
+    half_width <- if (n >= 2L) qt(0.975, n - 1L) * sd_effect / sqrt(n) else NA_real_
+    p_paired_t <- if (n >= 2L && sd_effect > 0) {
+      t_stat <- mean_effect / (sd_effect / sqrt(n))
+      2 * pt(-abs(t_stat), df = n - 1L)
+    } else NA_real_
     data.frame(program = program$program[1], n_donors = n,
                n_genes = program$n_genes[1], n_target_genes = program$n_target_genes[1],
                mean_effect = mean_effect, lower_95_t = mean_effect - half_width,
                upper_95_t = mean_effect + half_width, positive_donors = sum(x > 0),
-               p_sign_flip = if (n >= 2L && n <= 20L) exact_sign_flip(x) else NA_real_)
+               p_sign_flip = if (n >= 2L && n <= 20L) exact_sign_flip(x) else NA_real_,
+               p_paired_t = p_paired_t)
   }))
-  out$fdr <- p.adjust(out$p_sign_flip, "BH", n = nrow(out))
-  out
+  cbind(out[setdiff(names(out), "p_paired_t")],
+        fdr = p.adjust(out$p_sign_flip, "BH", n = nrow(out)),
+        p_paired_t = out$p_paired_t,
+        fdr_paired_t = p.adjust(out$p_paired_t, "BH"))
+}
+
+fry_programs <- function(y, programs, min_coverage = PARAMS$pseudobulk$minimum_program_coverage) {
+  available_genes <- rownames(y)
+  index <- lapply(programs, function(genes) match(intersect(genes, available_genes), available_genes))
+  n_genes <- lengths(index)
+  index <- index[n_genes > 0L & n_genes >= ceiling(min_coverage * lengths(programs))]
+  if (!length(index)) {
+    return(data.frame(program = character(), n_genes_fry = integer(),
+                      direction_fry = character(), p_fry = numeric(), fdr_fry = numeric(),
+                      p_fry_mixed = numeric(), fdr_fry_mixed = numeric()))
+  }
+  log_cpm <- edgeR::cpm(y, log = TRUE, prior.count = 1)
+  design <- model.matrix(~ patient + dc_subtype, y$samples)
+  tests <- limma::fry(log_cpm, index = index, design = design, contrast = ncol(design))
+  # limma omits the FDR columns when only one program is tested.
+  data.frame(program = rownames(tests), n_genes_fry = tests$NGenes,
+             direction_fry = tests$Direction, p_fry = tests$PValue,
+             fdr_fry = p.adjust(tests$PValue, "BH"), p_fry_mixed = tests$PValue.Mixed,
+             fdr_fry_mixed = p.adjust(tests$PValue.Mixed, "BH"))
 }

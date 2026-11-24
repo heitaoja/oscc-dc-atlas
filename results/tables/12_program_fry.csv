@@ -1,0 +1,51 @@
+"analysis","program","n_eligible","status","n_genes_fry","direction_fry","p_fry","fdr_fry","p_fry_mixed","fdr_fry_mixed"
+"primary","MHC class II",6,"fitted",8,"Down",0.0461321950553105,0.0461321950553105,0.0310093259890936,0.0310093259890936
+"primary","Maturation",6,"fitted",5,"Up",0.004102245045487,0.00512780630685875,0.00633859630628114,0.00792324538285143
+"primary","NF-kB feedback",6,"fitted",7,"Up",0.00273587057652254,0.00455978429420423,0.00143483947202895,0.00239139912004826
+"primary","Regulatory expression",6,"fitted",5,"Up",0.000183755655679539,0.000459389139198847,0.000195873577966088,0.00048968394491522
+"primary","Regulatory expression (incl. CD274/IDO1)",6,"fitted",7,"Up",9.6741572771321e-05,0.000459389139198847,2.20559818914124e-05,0.000110279909457062
+"min_5","MHC class II",7,"fitted",8,"Down",0.0252919015747816,0.0252919015747816,0.0204934787954529,0.0204934787954529
+"min_5","Maturation",7,"fitted",5,"Up",0.00424428730251552,0.0053053591281444,0.00906612081324053,0.0113326510165507
+"min_5","NF-kB feedback",7,"fitted",7,"Up",0.00209591998568017,0.00349319997613362,0.000184970838510427,0.000308284730850712
+"min_5","Regulatory expression",7,"fitted",5,"Up",4.79945307115756e-05,0.000119986326778939,0.000183357846914514,0.000308284730850712
+"min_5","Regulatory expression (incl. CD274/IDO1)",7,"fitted",7,"Up",3.37055914062919e-05,0.000119986326778939,2.22943422401238e-06,1.11471711200619e-05
+"cd163_neg_min10","MHC class II",4,"fitted",8,"Down",0.275965562837985,0.275965562837985,0.294255977298774,0.294255977298774
+"cd163_neg_min10","Maturation",4,"fitted",5,"Up",0.0123645161442755,0.0154556451803444,0.00708370590756617,0.00885463238445772
+"cd163_neg_min10","NF-kB feedback",4,"fitted",7,"Up",0.00982672171655226,0.0154556451803444,0.00246881945890688,0.00411469909817813
+"cd163_neg_min10","Regulatory expression",4,"fitted",6,"Up",0.00211684192611777,0.00529210481529441,0.000549721890122841,0.0013743047253071
+"cd163_neg_min10","Regulatory expression (incl. CD274/IDO1)",4,"fitted",8,"Up",0.000630819550519695,0.00315409775259847,0.000197802881384969,0.000989014406924845
+"cd163_neg_min5","MHC class II",7,"fitted",8,"Down",0.0318739584160853,0.0318739584160853,0.0182212824250544,0.0182212824250544
+"cd163_neg_min5","Maturation",7,"fitted",5,"Up",0.000259492323702993,0.000432487206171655,0.000748753557521363,0.000935941946901703
+"cd163_neg_min5","NF-kB feedback",7,"fitted",7,"Up",0.000965208992849353,0.00120651124106169,7.3122677652451e-06,1.21871129420752e-05
+"cd163_neg_min5","Regulatory expression",7,"fitted",6,"Up",2.5888165309665e-06,6.47204132741625e-06,2.28350631956668e-06,5.70876579891669e-06
+"cd163_neg_min5","Regulatory expression (incl. CD274/IDO1)",7,"fitted",8,"Up",5.5645629356715e-07,2.78228146783575e-06,7.89898297489889e-08,3.94949148744944e-07
+"hybrid_author_migDC_vs_cd163neg_cDC2","MHC class II",4,"fitted",8,"Down",0.0815354886416395,0.0815354886416395,0.0746566123536348,0.0746566123536348
+"hybrid_author_migDC_vs_cd163neg_cDC2","Maturation",4,"fitted",5,"Up",0.00363864855504998,0.00454831069381247,0.00192148567186839,0.00240185708983549
+"hybrid_author_migDC_vs_cd163neg_cDC2","NF-kB feedback",4,"fitted",7,"Up",0.003565030894892,0.00454831069381247,0.000115415750184911,0.000192359583641519
+"hybrid_author_migDC_vs_cd163neg_cDC2","Regulatory expression",4,"fitted",6,"Up",0.00077422113262941,0.00193555283157352,9.34490745766276e-05,0.000192359583641519
+"hybrid_author_migDC_vs_cd163neg_cDC2","Regulatory expression (incl. CD274/IDO1)",4,"fitted",8,"Up",6.44144238680618e-05,0.000322072119340309,3.68200532736471e-06,1.84100266368236e-05
+"author_dc_only_min10","MHC class II",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min10","Maturation",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min10","NF-kB feedback",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min10","Regulatory expression",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min10","Regulatory expression (incl. CD274/IDO1)",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min5","MHC class II",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min5","Maturation",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min5","NF-kB feedback",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min5","Regulatory expression",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_only_min5","Regulatory expression (incl. CD274/IDO1)",0,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"author_dc_migDC_vs_cDC1_min3","MHC class II",6,"fitted",8,"Down",0.00419205035286898,0.00419205035286898,0.00278916146442335,0.00278916146442335
+"author_dc_migDC_vs_cDC1_min3","Maturation",6,"fitted",5,"Up",0.000421048048134114,0.000887643481597269,0.000830538325809464,0.0012458074887142
+"author_dc_migDC_vs_cDC1_min3","NF-kB feedback",6,"fitted",7,"Up",0.000591762321064846,0.000887643481597269,9.38408381453391e-05,0.000281522514436017
+"author_dc_migDC_vs_cDC1_min3","Regulatory expression",6,"insufficient_program_coverage",NA,NA,NA,NA,NA,NA
+"author_dc_migDC_vs_cDC1_min3","Regulatory expression (incl. CD274/IDO1)",6,"insufficient_program_coverage",NA,NA,NA,NA,NA,NA
+"migDC_vs_cDC1","MHC class II",4,"fitted",8,"Down",0.0299372795260378,0.0449059192890567,0.0171545690768689,0.0257318536153034
+"migDC_vs_cDC1","Maturation",4,"fitted",5,"Up",0.0215025947277522,0.0449059192890567,0.0027555410065179,0.00826662301955369
+"migDC_vs_cDC1","NF-kB feedback",4,"fitted",7,"Up",0.0635778512092688,0.0635778512092688,0.0540400325921298,0.0540400325921298
+"migDC_vs_cDC1","Regulatory expression",4,"insufficient_program_coverage",NA,NA,NA,NA,NA,NA
+"migDC_vs_cDC1","Regulatory expression (incl. CD274/IDO1)",4,"insufficient_program_coverage",NA,NA,NA,NA,NA,NA
+"cDC1_vs_cDC2","MHC class II",3,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"cDC1_vs_cDC2","Maturation",3,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"cDC1_vs_cDC2","NF-kB feedback",3,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"cDC1_vs_cDC2","Regulatory expression",3,"insufficient_donors",NA,NA,NA,NA,NA,NA
+"cDC1_vs_cDC2","Regulatory expression (incl. CD274/IDO1)",3,"insufficient_donors",NA,NA,NA,NA,NA,NA
