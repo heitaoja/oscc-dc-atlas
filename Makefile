@@ -4,11 +4,14 @@
 # Windows where `Rscript` is not always on PATH.  Override with
 #   make RSCRIPT=/path/to/Rscript all
 RSCRIPT ?= Rscript
+SHELL := bash
+.SHELLFLAGS := -e -o pipefail -c
 
 STEPS := 01_load_qc 02_integrate_cluster 03_annotate_major 04_dc_subset \
-         05_dc_annotate_de 06_enrichment 07_trajectory 08_tf_activity 09_composition
+         05_dc_annotate_de 06_enrichment 07_trajectory 08_tf_activity 09_composition \
+         10_qc_figure 11_donor_pseudobulk
 
-.PHONY: all clean dirs params session $(STEPS)
+.PHONY: all clean dirs params session verify validate $(STEPS) 12_external_validation
 
 all: $(STEPS)
 
@@ -44,6 +47,20 @@ params: 01_load_qc
 
 09_composition: 05_dc_annotate_de
 	$(RSCRIPT) R/09_composition.R 2>&1 | tee results/logs/09_composition.log
+
+10_qc_figure: 01_load_qc
+	$(RSCRIPT) R/10_qc_figure.R 2>&1 | tee results/logs/10_qc_figure.log
+
+11_donor_pseudobulk: 05_dc_annotate_de
+	$(RSCRIPT) R/11_donor_pseudobulk.R 2>&1 | tee results/logs/11_donor_pseudobulk.log
+
+verify:
+	$(RSCRIPT) R/verify_primary.R
+
+validate: 12_external_validation
+
+12_external_validation: 11_donor_pseudobulk
+	$(RSCRIPT) R/12_external_validation.R 2>&1 | tee results/logs/12_external_validation.log
 
 session:
 	$(RSCRIPT) -e "writeLines(capture.output(sessionInfo()), 'docs/sessionInfo.txt')"

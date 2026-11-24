@@ -18,21 +18,11 @@ for (d in c(OBJ_DIR, TAB_DIR, FIG_DIR, LOG_DIR)) dir.create(d, recursive = TRUE,
 options(stringsAsFactors = FALSE, future.globals.maxSize = 8000 * 1024^2)
 set.seed(20240601)                       # single seed, used everywhere
 SEED <- 20240601
+DC_LABELS <- c("DC", "Dendritic cell", "Dendritic cells", "cDC", "pDC", "migDC")
 
 # ---- analysis parameters (single source of truth) -----------------------
-# Every number quoted in README / report is defined HERE and written to
-# results/tables/00_params.csv by 01_load_qc.R.  No magic numbers in scripts.
 PARAMS <- list(
-  # sample table: dataset -> samples.  "group" is tumour / normal.
-  samples = data.frame(
-    sample  = c("GSM5258385", "GSM5258386", "GSM5258387", "GSM5258388",
-                "GSM5258389", "GSM5258390", "GSM5820668", "GSM5820669",
-                "GSM5820670", "GSM5820671"),
-    dataset = c(rep("GSE172577", 6), rep("GSE193766", 4)),
-    group   = c(rep("tumour", 6), "tumour", "normal", "tumour", "normal"),
-    patient = c(paste0("P", 1:6), "P7", "P7", "P8", "P8"),
-    stringsAsFactors = FALSE
-  ),
+  samples = read.csv(file.path(PROJ, "config", "samples.csv"), colClasses = "character"),
 
   # ---- QC ----
   qc = list(
@@ -67,6 +57,11 @@ PARAMS <- list(
   de = list(test = "wilcox", min_pct = 0.1, logfc = 0.25,
             padj_cut = 0.05, logfc_cut = 0.5, top_n_label = 15),
 
+  # Paired donor pseudobulk on primary tumours. Lower thresholds are sensitivity analyses.
+  pseudobulk = list(primary_min_cells = 10L, sensitivity_min_cells = c(3L, 5L, 15L, 20L),
+                    secondary_min_cells = 5L, min_donors = 4L, fdr = 0.05,
+                    minimum_program_coverage = 0.6, balanced_repeats = 40L),
+
   # ---- enrichment ----
   enrich = list(padj_cut = 0.05, q_cut = 0.25, min_gs = 10, max_gs = 500),
 
@@ -74,6 +69,31 @@ PARAMS <- list(
   trajectory = list(use_clusters = c("cDC2", "migDC"), root_cluster = "cDC2",
                     n_top_trending = 40)
 )
+
+stopifnot(!anyNA(PARAMS$samples), !anyDuplicated(PARAMS$samples$sample),
+          !anyDuplicated(PARAMS$samples[c("patient", "group")]),
+          all(PARAMS$samples$group %in% c("tumour", "normal")))
+
+# Refresh provenance fields on cached cell objects and tables by library accession.
+# Match keys preserve row order and prevent old tissue labels from leaking into figures.
+sample_metadata <- function(rows) {
+  if (!"sample" %in% names(rows)) stop("Input has no sample column.")
+  at <- match(as.character(rows$sample), PARAMS$samples$sample)
+  if (anyNA(at)) stop("Unknown library accession: ",
+                     paste(unique(rows$sample[is.na(at)]), collapse = ", "))
+  rows$dataset <- factor(PARAMS$samples$dataset[at], levels = unique(PARAMS$samples$dataset))
+  rows$group <- factor(PARAMS$samples$group[at], levels = c("tumour", "normal"))
+  rows$patient <- PARAMS$samples$patient[at]
+  rows
+}
+
+read_atlas_object <- function(name, directory = OBJ_DIR) {
+  path <- file.path(directory, name)
+  if (!file.exists(path)) stop("Missing atlas object: ", path, ". Run the upstream stages.")
+  obj <- readRDS(path)
+  obj@meta.data <- sample_metadata(obj@meta.data)
+  obj
+}
 
 # ---- helper: logging ----------------------------------------------------
 log_msg <- function(...) {

@@ -1,0 +1,9 @@
+"dataset","program","n_donors","mean_effect","positive_donors"
+"GSE172577","MHC class II",3,-0.164136339913978,0
+"GSE172577","Maturation",3,1.0577214225131,3
+"GSE172577","NF-kB feedback",3,1.29602063143415,3
+"GSE172577","Regulatory expression",0,NA,0
+"GSE193766","MHC class II",2,-0.688109441586419,0
+"GSE193766","Maturation",2,0.965945135812784,2
+"GSE193766","NF-kB feedback",2,0.982635115179207,2
+"GSE193766","Regulatory expression",0,NA,0

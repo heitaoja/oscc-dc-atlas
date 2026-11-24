@@ -32,26 +32,26 @@
 "GSM5258390","tumour","migDC",12
 "GSM5258390","tumour","pDC",7
 "GSM5258390","tumour","Proliferating DC",38
-"GSM5820668","tumour","cDC1",41
-"GSM5820668","tumour","cDC2",130
-"GSM5820668","tumour","LC-like",1
-"GSM5820668","tumour","migDC",12
-"GSM5820668","tumour","pDC",94
-"GSM5820668","tumour","Proliferating DC",18
-"GSM5820669","normal","cDC1",22
-"GSM5820669","normal","cDC2",37
-"GSM5820669","normal","LC-like",20
-"GSM5820669","normal","migDC",56
-"GSM5820669","normal","pDC",17
-"GSM5820669","normal","Proliferating DC",20
-"GSM5820670","tumour","cDC1",7
-"GSM5820670","tumour","cDC2",30
-"GSM5820670","tumour","LC-like",13
-"GSM5820670","tumour","pDC",6
-"GSM5820670","tumour","Proliferating DC",5
-"GSM5820671","normal","cDC1",11
-"GSM5820671","normal","cDC2",55
-"GSM5820671","normal","LC-like",62
-"GSM5820671","normal","migDC",32
-"GSM5820671","normal","pDC",13
-"GSM5820671","normal","Proliferating DC",18
+"GSM5820668","normal","cDC1",41
+"GSM5820668","normal","cDC2",130
+"GSM5820668","normal","LC-like",1
+"GSM5820668","normal","migDC",12
+"GSM5820668","normal","pDC",94
+"GSM5820668","normal","Proliferating DC",18
+"GSM5820669","tumour","cDC1",22
+"GSM5820669","tumour","cDC2",37
+"GSM5820669","tumour","LC-like",20
+"GSM5820669","tumour","migDC",56
+"GSM5820669","tumour","pDC",17
+"GSM5820669","tumour","Proliferating DC",20
+"GSM5820670","normal","cDC1",7
+"GSM5820670","normal","cDC2",30
+"GSM5820670","normal","LC-like",13
+"GSM5820670","normal","pDC",6
+"GSM5820670","normal","Proliferating DC",5
+"GSM5820671","tumour","cDC1",11
+"GSM5820671","tumour","cDC2",55
+"GSM5820671","tumour","LC-like",62
+"GSM5820671","tumour","migDC",32
+"GSM5820671","tumour","pDC",13
+"GSM5820671","tumour","Proliferating DC",18

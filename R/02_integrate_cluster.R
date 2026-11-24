@@ -11,7 +11,7 @@ suppressPackageStartupMessages({
 })
 
 log_msg("STEP 02 -- normalise / integrate / cluster")
-obj <- readRDS(file.path(OBJ_DIR, "01_qc_filtered.rds"))
+obj <- read_atlas_object("01_qc_filtered.rds")
 # make the script robust to objects saved by an older version of 01 (split layers)
 if (length(Layers(obj[["RNA"]])) > 1) obj <- JoinLayers(obj)
 log_msg("input: ", ncol(obj), " cells x ", nrow(obj), " genes")

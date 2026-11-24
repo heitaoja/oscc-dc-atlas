@@ -3,7 +3,8 @@
 # run_all.sh -- run the whole pipeline without `make`
 # -----------------------------------------------------------------------------
 # Usage:
-#   ./run_all.sh              # run every step in order
+#   ./run_all.sh              # run the discovery workflow in order
+#   ./run_all.sh 12           # validate after downloading GSE181919
 #   ./run_all.sh 05 06        # run only the steps whose name starts with 05/06
 #   RSCRIPT=/usr/bin/Rscript ./run_all.sh
 #
@@ -23,7 +24,9 @@ STEPS=(
   08_tf_activity
   09_composition
   10_qc_figure
+  11_donor_pseudobulk
 )
+EXTERNAL_STEP=12_external_validation
 
 # ---- locate Rscript --------------------------------------------------------
 if [[ -z "${RSCRIPT:-}" ]]; then
@@ -45,9 +48,17 @@ mkdir -p results/logs results/objects results/figures results/tables
 if [[ $# -gt 0 ]]; then
   SELECTED=()
   for want in "$@"; do
-    for s in "${STEPS[@]}"; do
-      [[ "$s" == "$want"* ]] && SELECTED+=("$s")
+    matched=false
+    for s in "${STEPS[@]}" "$EXTERNAL_STEP"; do
+      if [[ "$s" == "$want"* ]]; then
+        SELECTED+=("$s")
+        matched=true
+      fi
     done
+    if ! "$matched"; then
+      echo "Unknown stage: $want" >&2
+      exit 2
+    fi
   done
 else
   SELECTED=("${STEPS[@]}")

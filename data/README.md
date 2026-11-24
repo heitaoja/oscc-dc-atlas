@@ -1,49 +1,52 @@
-# data/
+# Data preparation
 
-这个目录**不进入 git**（见根目录 `.gitignore`）。目录约定：
+## Refit the primary model
 
-```
-data/
-├── raw/                     # 原始数据（需自行下载，约 1.1 GB）
-│   ├── GSE172577/
-│   │   ├── GSM5258385_seurat.rds
-│   │   └── ...
-│   └── GSE193766/
-│       ├── GSM5820668_seurat.rds
-│       └── ...
-├── genesets/                # 基因集缓存（可提交，约 3 MB）
-│   ├── h.all.symbols.gmt              # MSigDB Hallmark v2024.1.Hs
-│   ├── c3.tft.v2024.1.Hs.symbols.gmt  # MSigDB C3 TFT
-│   └── kegg_hsa_pathway.gmt           # 由 rest.kegg.jp 构建（06 脚本自动生成）
-└── checksums.csv            # 原始文件 MD5
-```
+The main test can be reproduced directly with the public [primary aggregate counts](../results/tables/11_primary_pseudobulk_counts.tsv.gz) and [library map](../results/tables/11_primary_pseudobulk_libraries.csv).
 
-## 如何准备 `raw/`
+~~~bash
+Rscript -e 'install.packages("BiocManager"); BiocManager::install(c("edgeR","statmod"))'
+Rscript R/verify_primary.R
+~~~
 
-只需要每个 GSM 的 **`*_seurat.rds`**（内含整数 UMI 计数）。
-`*_mat.rds` 是 log1p(CPM)，不能当计数用——原因见
-[`docs/data_provenance.md`](../docs/data_provenance.md) §3。
+## Rebuild the discovery atlas
 
-从 GEO 下载：
+Use a current R and matching Bioconductor release. The committed run used R 4.6.2 and Seurat 5.6.0.
 
-```bash
-mkdir -p data/raw/GSE172577 data/raw/GSE193766
+~~~bash
+Rscript -e 'install.packages("BiocManager"); BiocManager::install(c(
+  "Seurat","harmony","SingleR","celldex","scDblFinder","clusterProfiler",
+  "org.Hs.eg.db","fgsea","slingshot","decoupleR","msigdbr","edgeR","limma",
+  "statmod","data.table","future","future.apply","dplyr","tidyr","ggplot2",
+  "ggrepel","patchwork"))'
+~~~
 
-# GSE172577（6 个 GSM）
-wget -P /tmp https://ftp.ncbi.nlm.nih.gov/geo/series/GSE172nnn/GSE172577/suppl/GSE172577_RAW.tar
-tar -xf /tmp/GSE172577_RAW.tar -C data/raw/GSE172577 --wildcards '*_seurat.rds'
+Place the harmonised `<GSM>_seurat.rds` and `<GSM>_metaData.rds` snapshots under `data/raw/<GSE>/`. Each Seurat snapshot supplies the integer RNA count layer. The metadata snapshot supplies barcode-indexed QC columns, including `nGene`, `nUMI` and `percent.mito`. The [sample manifest](../config/samples.csv) specifies the ten accessions. The previously prepared files can be verified with the following command from `data/raw`.
 
-# GSE193766（4 个 GSM）
-wget -P /tmp https://ftp.ncbi.nlm.nih.gov/geo/series/GSE193nnn/GSE193766/suppl/GSE193766_RAW.tar
-tar -xf /tmp/GSE193766_RAW.tar -C data/raw/GSE193766 --wildcards '*_seurat.rds'
-```
+~~~bash
+md5sum -c ../checksums.csv
+~~~
 
-校验：
+The [GEO accessions](../docs/data_provenance.md) provide MTX and TSV supplements. A reconstruction from these files needs a `ReadMtx()` import with Ensembl IDs, barcode-level QC metadata, and a review of the cluster annotations after running the atlas. The versioned count aggregates support immediate reproduction of the primary model with the published atlas definition.
 
-```bash
-cd data/raw && md5sum -c ../checksums.csv
-```
+To reuse a local `05_dc_annotated.rds` that sits outside this checkout, point the stage 11 command at its containing directory.
 
-> 如果 GEO 附件里没有 `_seurat.rds`（不同批次的补充文件可能不同），
-> 也可以下载 10x 三件套后用 `Read10X()` 读入；
-> 只需改 `R/01_load_qc.R` 里的 `read_counts()` 一个函数，其余步骤不变。
+~~~bash
+OSCC_OBJECT_DIR=/path/to/results/objects Rscript R/11_donor_pseudobulk.R
+~~~
+
+## External GSE181919
+
+Download the two supplements from [the GEO series page](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE181919) and keep the original compressed files in `data/raw/GSE181919/`.
+
+| File | GEO-listed size |
+|---|---:|
+| `GSE181919_Barcode_metadata.txt.gz` | 339,614 bytes |
+| `GSE181919_UMI_counts.txt.gz` | 127,878,601 bytes |
+
+~~~bash
+Rscript R/12_external_validation.R --inventory-only
+./run_all.sh 12
+~~~
+
+The first command requires the metadata file alone. The second requires both files and the stage 11 output tables. It streams the genes-by-cells TSV, so the complete dense gene-by-cell table stays off memory.

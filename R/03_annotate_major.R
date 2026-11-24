@@ -19,7 +19,7 @@ suppressPackageStartupMessages({
 })
 
 log_msg("STEP 03 -- annotation")
-obj <- readRDS(file.path(OBJ_DIR, "02_clustered.rds"))
+obj <- read_atlas_object("02_clustered.rds")
 
 # ---- 1. cluster markers (used as independent evidence) -------------------
 mk_file <- file.path(TAB_DIR, "03_cluster_markers.csv")

@@ -17,7 +17,7 @@ suppressPackageStartupMessages({
 })
 
 log_msg("STEP 05 -- DC annotation & DE")
-dc <- readRDS(file.path(OBJ_DIR, "04_dc_clustered.rds"))
+dc <- read_atlas_object("04_dc_clustered.rds")
 
 # ---- 1. apply annotation table -----------------------------------------
 ann_file <- file.path("config", "annotation_dc.csv")
@@ -55,8 +55,8 @@ top <- mk %>% group_by(cluster) %>% slice_max(avg_log2FC, n = 10) %>% ungroup()
 write.csv(top, file.path(TAB_DIR, "05_dc_marker_top.csv"), row.names = FALSE)
 
 # ---- 3. focal comparison: migratory vs cDC2 -----------------------------
-# This is the axis the original thesis claimed; tested here as a two-group
-# contrast on the RNA assay, reported with effect size and detection rate.
+# This cell-level comparison describes separation between annotated clusters.
+# Stage 11 estimates paired donor effects with integer UMI pseudobulk.
 contrast <- c(ident.1 = "migDC", ident.2 = "cDC2")
 if (all(contrast %in% levels(dc$dc_subtype))) {
   de <- FindMarkers(dc, ident.1 = contrast[1], ident.2 = contrast[2],

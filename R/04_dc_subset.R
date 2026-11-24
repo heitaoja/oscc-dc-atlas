@@ -16,11 +16,10 @@ suppressPackageStartupMessages({
 })
 
 log_msg("STEP 04 -- DC sub-clustering")
-obj <- readRDS(file.path(OBJ_DIR, "03_annotated.rds"))
+obj <- read_atlas_object("03_annotated.rds")
 stopifnot("cell_type" %in% colnames(obj@meta.data))
 
-dc_labels <- c("DC", "Dendritic cell", "Dendritic cells", "cDC", "pDC", "migDC")
-sel <- obj$cell_type %in% dc_labels
+sel <- obj$cell_type %in% DC_LABELS
 log_msg("  DC cells: ", sum(sel), " / ", ncol(obj))
 dc <- subset(obj, cells = colnames(obj)[sel])
 dc <- DietSeurat(dc, assays = "RNA", dimreducs = NULL, graphs = NULL)

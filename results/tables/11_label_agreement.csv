@@ -1,0 +1,62 @@
+"dataset","group","dc_subtype","marker_gate","n"
+"GSE172577","tumour","cDC1","ambiguous",4
+"GSE172577","tumour","cDC1","cDC1",20
+"GSE172577","tumour","cDC1","migDC",4
+"GSE172577","tumour","cDC1","unassigned",15
+"GSE172577","tumour","cDC2","ambiguous",6
+"GSE172577","tumour","cDC2","cDC2",31
+"GSE172577","tumour","cDC2","migDC",5
+"GSE172577","tumour","cDC2","unassigned",16
+"GSE172577","tumour","LC-like","ambiguous",13
+"GSE172577","tumour","LC-like","cDC2",135
+"GSE172577","tumour","LC-like","migDC",7
+"GSE172577","tumour","LC-like","unassigned",35
+"GSE172577","tumour","migDC","ambiguous",3
+"GSE172577","tumour","migDC","migDC",53
+"GSE172577","tumour","migDC","unassigned",2
+"GSE172577","tumour","pDC","migDC",15
+"GSE172577","tumour","pDC","unassigned",210
+"GSE172577","tumour","Proliferating DC","ambiguous",2
+"GSE172577","tumour","Proliferating DC","cDC2",23
+"GSE172577","tumour","Proliferating DC","migDC",4
+"GSE172577","tumour","Proliferating DC","unassigned",49
+"GSE193766","tumour","cDC1","ambiguous",4
+"GSE193766","tumour","cDC1","cDC1",24
+"GSE193766","tumour","cDC1","unassigned",5
+"GSE193766","tumour","cDC2","ambiguous",23
+"GSE193766","tumour","cDC2","cDC2",42
+"GSE193766","tumour","cDC2","migDC",9
+"GSE193766","tumour","cDC2","unassigned",18
+"GSE193766","tumour","LC-like","ambiguous",9
+"GSE193766","tumour","LC-like","cDC2",53
+"GSE193766","tumour","LC-like","migDC",3
+"GSE193766","tumour","LC-like","unassigned",17
+"GSE193766","tumour","migDC","ambiguous",9
+"GSE193766","tumour","migDC","migDC",78
+"GSE193766","tumour","migDC","unassigned",1
+"GSE193766","tumour","pDC","migDC",1
+"GSE193766","tumour","pDC","unassigned",29
+"GSE193766","tumour","Proliferating DC","cDC1",1
+"GSE193766","tumour","Proliferating DC","cDC2",11
+"GSE193766","tumour","Proliferating DC","migDC",3
+"GSE193766","tumour","Proliferating DC","unassigned",23
+"GSE193766","normal","cDC1","ambiguous",5
+"GSE193766","normal","cDC1","cDC1",40
+"GSE193766","normal","cDC1","migDC",1
+"GSE193766","normal","cDC1","unassigned",2
+"GSE193766","normal","cDC2","ambiguous",45
+"GSE193766","normal","cDC2","cDC1",1
+"GSE193766","normal","cDC2","cDC2",105
+"GSE193766","normal","cDC2","migDC",2
+"GSE193766","normal","cDC2","unassigned",7
+"GSE193766","normal","LC-like","cDC2",12
+"GSE193766","normal","LC-like","migDC",1
+"GSE193766","normal","LC-like","unassigned",1
+"GSE193766","normal","migDC","migDC",12
+"GSE193766","normal","pDC","migDC",5
+"GSE193766","normal","pDC","unassigned",95
+"GSE193766","normal","Proliferating DC","ambiguous",4
+"GSE193766","normal","Proliferating DC","cDC1",7
+"GSE193766","normal","Proliferating DC","cDC2",5
+"GSE193766","normal","Proliferating DC","migDC",2
+"GSE193766","normal","Proliferating DC","unassigned",5

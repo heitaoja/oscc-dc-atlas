@@ -1,0 +1,5 @@
+"program","n_donors","n_genes","n_target_genes","mean_effect","lower_95_t","upper_95_t","positive_donors","p_sign_flip","fdr","min_cells"
+"MHC class II",4,8,8,-0.379691159891723,-1.07139664025662,0.312014320473175,1,0.25,0.333333333333333,5
+"Maturation",4,5,6,1.60308239954348,0.959131754935216,2.24703304415174,4,0.125,0.25,5
+"NF-kB feedback",4,6,7,1.64628884531235,1.01633790877442,2.27623978185027,4,0.125,0.25,5
+"Regulatory expression",0,3,7,NA,NA,NA,0,NA,NA,5

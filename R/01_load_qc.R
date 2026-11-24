@@ -146,8 +146,7 @@ merged <- merge(objs[[1]], y = objs[-1], add.cell.ids = names(objs), project = "
 # detection require a single joined layer, so join here (not in every script).
 merged <- JoinLayers(merged)
 merged$sample  <- factor(merged$sample, levels = samples$sample)
-merged$dataset <- factor(merged$dataset, levels = unique(samples$dataset))
-merged$group   <- factor(merged$group, levels = c("tumour", "normal"))
+merged@meta.data <- sample_metadata(merged@meta.data)
 rm(objs); gc()
 saveRDS(merged, file.path(OBJ_DIR, "01_qc_filtered.rds"))
 

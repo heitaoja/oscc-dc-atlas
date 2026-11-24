@@ -1,0 +1,48 @@
+role,program,gene
+annotation,cDC1,CLEC9A
+annotation,cDC1,XCR1
+annotation,cDC1,BATF3
+annotation,cDC1,IRF8
+annotation,cDC1,CADM1
+annotation,cDC1,CDH2
+annotation,cDC2,CD1C
+annotation,cDC2,CLEC10A
+annotation,cDC2,FCER1A
+annotation,cDC2,SIRPA
+annotation,cDC2,CD300E
+annotation,cDC2,EREG
+annotation,migDC,LAMP3
+annotation,migDC,CCR7
+annotation,migDC,CCL17
+annotation,migDC,CCL19
+annotation,migDC,CCL22
+annotation,migDC,CD274
+annotation,migDC,IDO1
+held_out,Maturation,CD40
+held_out,Maturation,CD80
+held_out,Maturation,CD83
+held_out,Maturation,CD86
+held_out,Maturation,IL12B
+held_out,Maturation,MARCKSL1
+held_out,Regulatory expression,PDCD1LG2
+held_out,Regulatory expression,CD200
+held_out,Regulatory expression,FAS
+held_out,Regulatory expression,IL4I1
+held_out,Regulatory expression,ALDH1A2
+held_out,Regulatory expression,SOCS1
+held_out,Regulatory expression,SOCS2
+held_out,MHC class II,HLA-DRA
+held_out,MHC class II,HLA-DRB1
+held_out,MHC class II,HLA-DPA1
+held_out,MHC class II,HLA-DPB1
+held_out,MHC class II,HLA-DQA1
+held_out,MHC class II,HLA-DQB1
+held_out,MHC class II,CD74
+held_out,MHC class II,CIITA
+held_out,NF-kB feedback,NFKBIA
+held_out,NF-kB feedback,TNFAIP3
+held_out,NF-kB feedback,BIRC3
+held_out,NF-kB feedback,NFKBIZ
+held_out,NF-kB feedback,RELB
+held_out,NF-kB feedback,TNIP1
+held_out,NF-kB feedback,TRAF1
