@@ -1,4 +1,4 @@
-# Stage 14: publication figures using the reviewed atlas estimates.
+# Publication figures (Figs. 1-5) from discovery, TME, and validation results.
 started <- proc.time()[["elapsed"]]
 source("R/00_setup.R")
 source("R/pseudobulk.R")

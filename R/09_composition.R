@@ -1,4 +1,4 @@
-# Stage 09: library-level descriptive composition from stages 03 and 05.
+# Library-level cell composition across major lineages and dendritic-cell subtypes.
 source("R/00_setup.R")
 suppressPackageStartupMessages({library(dplyr); library(ggplot2); library(tidyr)})
 

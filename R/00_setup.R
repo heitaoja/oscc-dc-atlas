@@ -76,8 +76,7 @@ stopifnot(!anyNA(PARAMS$samples), !anyDuplicated(PARAMS$samples$sample),
           !anyDuplicated(PARAMS$samples[c("patient", "group")]),
           all(PARAMS$samples$group %in% c("tumour", "normal")))
 
-# Refresh provenance fields on cached cell objects and tables by library accession.
-# Match keys preserve row order and prevent old tissue labels from leaking into figures.
+# Attach cohort, tissue, and donor metadata from config/samples.csv by library accession.
 sample_metadata <- function(rows) {
   if (!"sample" %in% names(rows)) stop("Input has no sample column.")
   at <- match(as.character(rows$sample), PARAMS$samples$sample)
@@ -91,15 +90,10 @@ sample_metadata <- function(rows) {
 
 atlas_object_path <- function(name, directory = OBJ_DIR) {
   path <- file.path(directory, name)
-  if (file.exists(path)) return(path)
-  fallback <- file.path(PROJ, "..", "..", "oscc-dc-atlas", "results", "objects", name)
-  if (!file.exists(fallback)) {
-    stop("Missing atlas object: ", path, ". Checked fallback: ", fallback,
-         ". Run the upstream stages.")
+  if (!file.exists(path)) {
+    stop("Missing atlas object: ", path, ". Run the upstream pipeline or set OSCC_OBJECT_DIR.")
   }
-  fallback <- normalizePath(fallback, winslash = "/")
-  log_msg("Reading atlas object from upstream cache: ", fallback)
-  fallback
+  path
 }
 
 read_atlas_object <- function(name, directory = OBJ_DIR) {

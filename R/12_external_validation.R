@@ -1,4 +1,4 @@
-# Stage 12: independent validation in primary oral-cavity tumours from GSE181919.
+# External cohort validation in primary oral-cavity tumours from GSE181919.
 source("R/00_setup.R")
 source("R/pseudobulk.R")
 suppressPackageStartupMessages({

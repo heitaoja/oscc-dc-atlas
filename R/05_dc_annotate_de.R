@@ -55,8 +55,7 @@ top <- mk %>% group_by(cluster) %>% slice_max(avg_log2FC, n = 10) %>% ungroup()
 write.csv(top, file.path(TAB_DIR, "05_dc_marker_top.csv"), row.names = FALSE)
 
 # ---- 3. focal comparison: migratory vs cDC2 -----------------------------
-# This cell-level comparison describes separation between annotated clusters.
-# Stage 11 estimates paired donor effects with integer UMI pseudobulk.
+# Cell-level cluster marker comparison; donor-level pseudobulk inference is run in 11_donor_pseudobulk.R.
 contrast <- c(ident.1 = "migDC", ident.2 = "cDC2")
 if (all(contrast %in% levels(dc$dc_subtype))) {
   de <- FindMarkers(dc, ident.1 = contrast[1], ident.2 = contrast[2],

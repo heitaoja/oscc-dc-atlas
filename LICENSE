@@ -22,6 +22,6 @@ SOFTWARE.
 
 ---
 
-Figures and result tables (results/figures, results/tables, report/) are
-released under CC-BY-4.0. The underlying expression data remain subject to the
-terms of the original GEO submissions (GSE172577, GSE193766).
+Figures and result tables (results/figures, results/tables) are released under
+CC-BY-4.0. The underlying expression data remain subject to the terms of the
+original GEO submissions (GSE172577, GSE193766, GSE181919).

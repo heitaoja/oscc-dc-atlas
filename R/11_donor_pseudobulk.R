@@ -1,4 +1,4 @@
-# Stage 11: donor-paired analysis and stress tests of the discovery atlas.
+# Donor-paired pseudobulk differential expression and sensitivity analyses.
 source("R/00_setup.R")
 source("R/pseudobulk.R")
 suppressPackageStartupMessages({

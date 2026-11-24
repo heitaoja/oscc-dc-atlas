@@ -1,4 +1,4 @@
-# Stage 13: donor-level covariation across OSCC immune populations.
+# Patient-level tumour microenvironment covariation across immune populations.
 source("R/00_setup.R")
 source("R/pseudobulk.R")
 suppressPackageStartupMessages({
@@ -107,8 +107,8 @@ for (prefix in names(profile_types)) {
 }
 profiles$tcell_inhibitory_module <- rowMeans(profiles[paste0("tcell_", inhibitory_genes)])
 
-# Use Stage 11's donor effects when exported. Older Stage 11 tables export the
-# primary effects only, so reproduce the same paired model for the sensitivity run.
+# Reuse exported donor program scores from 11_donor_pseudobulk.R when present;
+# compute sensitivity-threshold scores directly if only primary scores were exported.
 program_keys <- c("Maturation" = "maturation", "Regulatory expression" = "regulatory_expression",
                   "NF-kB feedback" = "nfkb_feedback")
 programs <- read_dc_programs()
@@ -124,7 +124,7 @@ load_program_effects <- function(analysis) {
   effects <- filter(published_effects, .data$analysis == .env$analysis, program %in% names(programs))
   if (!nrow(effects) && analysis == sensitivity_id) {
     stopifnot(nrow(used) >= cfg$min_donors)
-    log_msg("  Refit ", analysis, " donor programs from Stage 11 settings for ",
+    log_msg("  Computing ", analysis, " donor program scores for ",
             nrow(used), " matched tumour donors")
     fit <- fit_paired_bulk(paired_bulk(dc_bulk, used, "migDC", "cDC2"))
     effects <- program_differences(paired_effects(fit$y, "migDC", "cDC2"), programs,
